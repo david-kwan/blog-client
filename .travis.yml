@@ -8,10 +8,13 @@ before_install:
 script:
   - docker run -e CI=true davidkwan/blog-client npm run test
 
+after_success:
+  - docker build -t davidkwan/blog-client .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push davidkwan/blog-client
+
 deploy:
   provider: heroku
   api_key:
     secure: $HEROKU_API_KEY
   app: david-blog-client
-  on:
-    branch: master
