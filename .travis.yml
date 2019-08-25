@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t davidkwan/blog-client -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true davidkwan/blog-client npm run test
