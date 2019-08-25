@@ -1,0 +1,12 @@
+FROM node:alpine
+
+WORKDIR '/client'
+
+COPY package.json .
+
+RUN npm install
+
+# copy current directory contents into working directory snapshot
+COPY . .
+
+CMD ["npm", "run", "dev"]

@@ -1,0 +1,30 @@
+.container {
+    max-width: 120rem;
+    margin: 8rem auto; // centers container in body element
+    background-color: var(--color-grey-light-2);
+    box-shadow: --shadow-dark;
+
+    min-height: 50rem;
+}
+
+.header {
+    height: 7rem;
+    background-color: #fff;
+    border-bottom: var(--color-grey-light-2);
+}
+
+.content {
+    display: flex;
+}
+
+.sidebar {
+    // background-color: var(--color-grey-dark-1);
+    background-color: white;
+
+    flex: 0 0 18%; // we don't want it to grow/shrink 
+}
+
+.info {
+    background-color: #fff;
+    flex: 1; // take up as much available space
+}
