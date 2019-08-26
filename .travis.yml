@@ -7,7 +7,6 @@ before_install:
 
 script:
   - docker run -e CI=true davidkwan/blog-client npm run test
-  - docker run -e CI=true davidkwan/blog-client npm run cypress:run
 
 after_success:
   - docker build -t davidkwan/blog-client .
