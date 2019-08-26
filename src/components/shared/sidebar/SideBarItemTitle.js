@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 const SideBarItemTitle = props => {
   const { title, href } = props;
   return (
-    <Link to={href} className="sidebar-item__title">
+    <Link
+      data-a8n={`sidebar-item__title-${title.toLowerCase()}`}
+      to={href}
+      className="sidebar-item__title"
+    >
       {title}
     </Link>
   );
