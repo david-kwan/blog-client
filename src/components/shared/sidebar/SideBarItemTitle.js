@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const SideBarItemTitle = props => {
-  const { title } = props;
+  const { title, href } = props;
   return (
-    <a href="#" className="sidebar-item__title">
+    <Link to={href} className="sidebar-item__title">
       {title}
-    </a>
+    </Link>
   );
 };
 

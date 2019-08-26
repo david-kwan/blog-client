@@ -1,11 +1,23 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const VENDOR_LIBS = [
+  'prop-types',
+  'react',
+  'react-dom',
+  'react-hot-loader',
+  'react-router-dom'
+];
+
 module.exports = {
-  entry: ['react-hot-loader/patch', './src/index.js'],
+  // entry: ['react-hot-loader/patch', './src/index.js'],
+  entry: {
+    bundle: './src/index.js',
+    vendor: VENDOR_LIBS
+  },
   output: {
     path: path.join(__dirname, 'dist'), // absolute path
-    filename: 'app.bundle.js',
+    filename: '[name].[chunkhash].js',
     publicPath: '/'
   },
   module: {
@@ -21,6 +33,17 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
